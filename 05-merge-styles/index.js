@@ -31,8 +31,3 @@ async function combine() {
   }
 }
 combine();
-
-// if (path.extname(file) === 'css') {
-//   const readFiles = fs.readFile(file, 'utf-8');
-//   fs.writeFile(pathToProject)
-// }
