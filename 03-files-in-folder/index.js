@@ -8,14 +8,15 @@ fs.readdir(pathToFolder, (err, fileList) => {
     fs.stat(pathToFile, (err, el) => {
       let elSize = el.size;
       const extansion = path.extname(file);
-      if (!el.isFile()) elSize = 0;
-      console.log(
-        file.slice(0, -extansion.length),
-        '-',
-        extansion.slice(1, extansion.length),
-        '-',
-        elSize,
-      );
+      if (el.isFile()) {
+        console.log(
+          file.slice(0, -extansion.length),
+          '-',
+          extansion.slice(1, extansion.length),
+          '-',
+          elSize,
+        );
+      }
     });
   });
 });
