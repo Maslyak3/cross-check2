@@ -3,6 +3,7 @@ const path = require('path');
 const pathToTemplate = path.join(__dirname, 'template.html');
 const pathToComponents = path.join(__dirname, 'components');
 const pathToIndexHtml = path.join(__dirname, 'index.html');
+const pathToProjectDist = path.join(__dirname, 'project-dist');
 
 async function createSite() {
   try {
@@ -30,6 +31,13 @@ async function createSite() {
 
       await fs.writeFile(pathToIndexHtml, templateContent, 'utf-8'); //create index.html with content
     }
+    // await fs.rm(pathToProjectDist, { recursive: true, force: true });
+    await fs.mkdir(pathToProjectDist, { recursive: true });
+    // replace index.html in project-dist folder
+    await fs.rename(
+      pathToIndexHtml,
+      path.join(pathToProjectDist, 'index.html'),
+    );
   } catch (err) {
     console.error(err);
   }
